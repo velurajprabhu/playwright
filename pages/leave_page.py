@@ -1,4 +1,6 @@
 from pages.base_page import BasePage
+from playwright.sync_api import TimeoutError
+
 
 class LeavePage(BasePage):
 
@@ -93,12 +95,10 @@ class LeavePage(BasePage):
     def assign_leave_type(self, context, employee_name, leave_type, days="10"):
 
         self.click(self.LEAVE_MENU)
-        # self.click(self.ENTITLEMENTS_MENU)
         self.page.get_by_text(self.ENTITLEMENTS_MENU).click()
         self.click(self.ADD_ENTITLEMENT_OPTION)
         self.fill(self.EMPLOYEE_NAME_INPUT, employee_name)
         self.page.get_by_text(employee_name).click()
-        # self.fill(self.ENTITLEMENT_INPUT, days)
         field = context.page.locator(
             "//label[text()='Entitlement']/following::input[1]"
         )
@@ -109,7 +109,7 @@ class LeavePage(BasePage):
         self.page.get_by_text(leave_type).click()
         self.click(self.SAVE_BTN)
         self.click(self.CONFIRM_BTN)
-
+        self.page.wait_for_load_state("networkidle")
         self.page.get_by_role("link", name="Assign Leave").click()
         # Employee selection
         self.fill(self.EMPLOYEE_NAME_INPUT, employee_name)
@@ -121,16 +121,17 @@ class LeavePage(BasePage):
 
         from_date = context.page.get_by_placeholder("yyyy-dd-mm").nth(0)
         to_date = context.page.get_by_placeholder("yyyy-dd-mm").nth(1)
-
-        from_date.fill("2026-25-03")
+        from_date.fill(context.from_date)
         to_date.click()
-        to_date.press("Meta+A")
-        to_date.press("Backspace")
-        to_date.fill("2026-26-03")
+        to_date.fill(context.to_date)
+        to_date.click()
+        self.page.wait_for_load_state("networkidle")
         self.page.get_by_role("button", name=self.ASSIGN_BTN).click()
-
-        # Confirm popup
+        toast = context.page.locator("text=Failed to Submit")
+        if toast.is_visible():
+            raise AssertionError("""
+        ❌ Action failed: 'Failed to Submit' toast appeared
+        """)
+        self.assert_submit_success()
         self.click(self.CONFIRM_BTN)
-
-        # Wait for success
         self.page.locator(self.SUCCESS_MSG).wait_for()

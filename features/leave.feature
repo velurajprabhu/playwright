@@ -1,5 +1,6 @@
 Feature: Leave Lifecycle
-Background:
+
+  Background:
     Given user navigates to login page
     When user logs in with valid_user
 
