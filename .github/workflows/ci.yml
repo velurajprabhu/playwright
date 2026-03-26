@@ -52,19 +52,16 @@ jobs:
           name: allure-results
           path: reports/
 
-      - name: 📊 Install Allure
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y allure
-
       - name: 📊 Generate Allure Report
-        run: |
-          allure generate reports -o allure-report --clean
+        uses: simple-elf/allure-report-action@v1
+        with:
+          allure_results: reports
+          allure_report: allure-report
 
       - name: 🔍 Debug files
         run: |
           ls -R
-          
+
       - name: 🚀 Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
