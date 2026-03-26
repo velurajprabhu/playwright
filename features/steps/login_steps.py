@@ -35,3 +35,18 @@ def step_impl(context):
 @then("session should not persist after logout")
 def step_impl(context):
     context.login_page.session_validation(context)
+
+from behave import when
+
+@when("user loads login page with performance check")
+def step_impl(context):
+    context.page.goto(context.base_url)
+    perf = context.page.evaluate("window.performance.timing")
+    load_time = (perf["loadEventEnd"] - perf["navigationStart"]) / 1000
+    print(f"⏱ Login Page Load: {load_time:.2f}s")
+
+    assert load_time < 2, f"""
+❌ Login page too slow
+Expected: < 2s
+Actual: {load_time:.2f}s
+"""
