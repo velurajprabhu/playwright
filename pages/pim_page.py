@@ -2,27 +2,16 @@ from pages.base_page import BasePage
 
 class PimPage(BasePage):
 
-    # Menu
     PIM_MENU = "//span[text()='PIM']"
-
-    # Add Employee
     ADD_BTN = "//button[normalize-space()='Add']"
     FIRST_NAME = "input[name='firstName']"
     LAST_NAME = "input[name='lastName']"
     SAVE_BTN = "(//button[normalize-space()='Save'])[1]"
-
-    # Employee ID (auto-generated)
     EMPLOYEE_ID = "(//input[contains(@class,'oxd-input')])[5]"
-
-    # Search
     SEARCH_NAME_INPUT = "(//input[@placeholder='Type for hints...'])[1]"
     SEARCH_BTN = "//button[normalize-space()='Search']"
     EMPLOYEE_RESULT = "//div[@role='row']"
-
-    # Edit
     EDIT_FIRST_NAME = "input[name='firstName']"
-
-    # Delete
     DELETE_BTN = "//i[contains(@class,'bi-trash')]"
     CONFIRM_DELETE = "//button[normalize-space()='Yes, Delete']"
 

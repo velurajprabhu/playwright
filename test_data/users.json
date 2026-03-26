@@ -17,5 +17,9 @@
   "username": "",
   "password": "",
   "error_msg": ["Required", "Required"]
+  },
+  "employee": {
+  "username": "auto_testing",
+  "password": "Test@123"
   }
 }
