@@ -23,3 +23,7 @@ def step_impl(context):
 @then("user should see login error message for {username}")
 def step_impl(context, username):
     context.login_page.get_error(context, username)
+
+@then("validation messages should be displayed for {username}")
+def step_impl(context,username):
+    context.login_page.get_required_field_errors(context, username)

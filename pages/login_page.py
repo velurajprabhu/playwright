@@ -8,6 +8,11 @@ class LoginPage(BasePage):
     PASSWORD = "input[name='password']"
     LOGIN_BTN = "button[type='submit']"
     ERROR_MSG = ".oxd-alert-content-text"
+    REQUIRED_FIELDS = ".oxd-input-field-error-message"
+
+    def get_required_field_errors(self, context, username):
+        expected = [e.strip() for e in self.page.locator(self.REQUIRED_FIELDS).all_inner_texts()]
+        self.compare(expected ,context.users[username]['error_msg'])
 
     def login(self,context, username):
         self.fill(self.USERNAME, context.users[username]['username'])

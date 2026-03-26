@@ -16,5 +16,8 @@ Feature: Login functionality
     | invalid_username    |
     | invalid_password    |
 
-
-
+  @login
+  Scenario: Empty credentials
+    Given user navigates to login page
+    When user logs in with empty_credentials
+    Then validation messages should be displayed for empty_credentials

@@ -12,5 +12,10 @@
   "username": "Admin",
   "password": "wrong",
   "error_msg": "Invalid credentials"
+  },
+  "empty_credentials": {
+  "username": "",
+  "password": "",
+  "error_msg": ["Required", "Required"]
   }
 }
