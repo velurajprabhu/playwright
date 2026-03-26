@@ -9,6 +9,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 
     steps:
       - name: 📥 Checkout code
@@ -53,14 +55,10 @@ jobs:
           path: reports/
 
       - name: 📊 Generate Allure Report
-        uses: simple-elf/allure-report-action@v1
+        uses: andgineer/allure-report@v3
         with:
-          allure_results: reports
-          allure_report: allure-report
-
-      - name: 🔍 Debug files
-        run: |
-          ls -R
+          allure-results: reports
+          website: allure-report
 
       - name: 🚀 Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
