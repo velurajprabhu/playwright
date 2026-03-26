@@ -3,3 +3,6 @@
 *.png
 __pycache__
 pages/__pycache__/base_page.cpython-312.pyc
+.webm
+videos
+reports
