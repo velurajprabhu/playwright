@@ -5,6 +5,8 @@ Feature: Login functionality
     Given user navigates to login page
     When user logs in with valid_user
     Then user should see dashboard
+    Then user logout of the application
+    Then session should not persist after logout
 
   @login
   Scenario Outline: Invalid login

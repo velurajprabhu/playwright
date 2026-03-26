@@ -14,6 +14,9 @@ class BasePage:
     def is_visible(self, locator):
         return self.page.locator(locator).is_visible()
 
+    def get_role(self, role, name):
+        return self.page.get_by_role(role, name=name)
+
     def compare(self, actual, expected):
         assert actual == expected, f"""
         ❌ Error Message Mismatch

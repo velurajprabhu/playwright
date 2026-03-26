@@ -27,3 +27,11 @@ def step_impl(context, username):
 @then("validation messages should be displayed for {username}")
 def step_impl(context,username):
     context.login_page.get_required_field_errors(context, username)
+
+@then("user logout of the application")
+def step_impl(context):
+    context.login_page.logout(context)
+
+@then("session should not persist after logout")
+def step_impl(context):
+    context.login_page.session_validation(context)
