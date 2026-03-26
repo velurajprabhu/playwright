@@ -22,8 +22,6 @@ def before_all(context):
     context.playwright = sync_playwright().start()
     headless = os.getenv("CI", "false").lower() == "true"
     context.browser = context.playwright.chromium.launch(headless=headless)
-    context.browser = context.playwright.chromium.launch(headless=False)
-
 
 def before_scenario(context, scenario):
     context.context = context.browser.new_context(
