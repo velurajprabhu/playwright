@@ -1,12 +1,20 @@
 Feature: Login functionality
 
+  @login
   Scenario: Valid login
     Given user navigates to login page
-    When user logs in with username "Admin" and password "admin123"
+    When user logs in with valid_user
     Then user should see dashboard
 
-  Scenario: Invalid login
+  @login
+  Scenario Outline: Invalid login
     Given user navigates to login page
-    When user logs in with username "wrong" and password "wrong"
-    Then user should see login error message
+    When user logs in with <user>
+    Then user should see login error message for <user>
+    Examples:
+      |user |
+    | invalid_username    |
+    | invalid_password    |
+
+
 

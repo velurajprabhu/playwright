@@ -1,0 +1,16 @@
+{
+  "valid_user": {
+    "username": "Admin",
+    "password": "admin123"
+  },
+  "invalid_username": {
+    "username": "32423",
+    "password": "admin123",
+    "error_msg": "Invalid credentials"
+  },
+  "invalid_password": {
+  "username": "Admin",
+  "password": "wrong",
+  "error_msg": "Invalid credentials"
+  }
+}

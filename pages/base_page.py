@@ -13,3 +13,10 @@ class BasePage:
 
     def is_visible(self, locator):
         return self.page.locator(locator).is_visible()
+
+    def compare(self, actual, expected):
+        assert actual == expected, f"""
+        ❌ Error Message Mismatch
+        Expected: '{expected}'
+        Actual:   '{actual}'
+        """
