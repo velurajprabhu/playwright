@@ -1,6 +1,6 @@
 Feature: Login functionality
 
-  @login
+  @login @pipeline
   Scenario: Valid login
     Given user navigates to login page
     When user logs in with valid_user
@@ -8,7 +8,7 @@ Feature: Login functionality
     Then user logout of the application
     Then session should not persist after logout
 
-  @login
+  @login @pipeline
   Scenario Outline: Invalid login
     Given user navigates to login page
     When user logs in with <user>
@@ -18,7 +18,7 @@ Feature: Login functionality
     | invalid_username    |
     | invalid_password    |
 
-  @login
+  @login @pipeline
   Scenario: Empty credentials
     Given user navigates to login page
     When user logs in with empty_credentials

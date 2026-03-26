@@ -4,7 +4,7 @@ Feature: Leave Lifecycle
     Given user navigates to login page
     When user logs in with valid_user
 
-  @leave
+  @leave @pipeline
   Scenario: Leave lifecycle with entitlement
 
     Given admin creates leave type

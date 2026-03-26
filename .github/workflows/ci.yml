@@ -31,7 +31,7 @@ jobs:
 
       - name: 🧪 Run Behave tests with Allure
         run: |
-          behave --tags=@login -f allure_behave.formatter:AllureFormatter -o reports/ || true
+          behave --tags=@pipeline -f allure_behave.formatter:AllureFormatter -o reports/ || true
 
       - name: 📸 Upload Screenshots
         if: always()

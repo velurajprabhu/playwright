@@ -1,6 +1,6 @@
 Feature: API + UI Hybrid
 
-  @api
+  @api @pipeline
   Scenario: Employee lifecycle via API and UI
     When employee is created via API
     Then employee should appear in UI

@@ -1,16 +1,16 @@
 Feature: Performance Validation
 
-  @performance
+  @performance @pipeline
   Scenario: Login performance validation
     When user loads login page with performance check
 
-  @performance
+  @performance @pipeline
   Scenario: Dashboard load performance using browser API
     Given user navigates to login page
     When user logs in with valid_user
     Then dashboard should load within 3 seconds using browser metrics
 
-  @performance
+  @performance @pipeline
   Scenario: Employee list page load performance
     Given user navigates to login page
     When user logs in with valid_user

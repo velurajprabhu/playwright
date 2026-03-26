@@ -3,7 +3,7 @@ Feature: Employee Management - PIM
     Given user navigates to login page
     When user logs in with valid_user
 
-  @pim
+  @pim @pipeline
   Scenario: Full employee lifecycle
     Given user is on PIM page
     When user adds a new employee
