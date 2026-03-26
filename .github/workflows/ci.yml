@@ -52,7 +52,8 @@ jobs:
           name: allure-results
           path: reports/
 
-      - name: 📊 Generate Allure Report
-        run: |
-          sudo apt-get install -y allure
-          allure generate reports -o allure-report
+      - name: 🚀 Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./allure-report
